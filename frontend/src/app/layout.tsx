@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
+import { MotionProvider } from "@/components/providers/motion-provider";
+import { JsonLd } from "@/components/marketing/json-ld";
+import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -23,6 +26,59 @@ export const metadata: Metadata = {
     "Pikzelkraft delivers pixel-perfect digital marketing and IT solutions for ambitious brands.",
   keywords: ["digital marketing", "IT solutions", "web development", "Pikzelkraft"],
   metadataBase: new URL("https://pikzelkraft.com"),
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    siteName: "Pikzelkraft",
+    title: "Pikzelkraft — Digital Marketing & IT Solutions",
+    description:
+      "Pikzelkraft delivers pixel-perfect digital marketing and IT solutions for ambitious brands.",
+    url: "https://pikzelkraft.com",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Pikzelkraft — Digital Marketing & IT Solutions",
+    description:
+      "Pikzelkraft delivers pixel-perfect digital marketing and IT solutions for ambitious brands.",
+  },
+};
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Pikzelkraft",
+  url: siteConfig.url,
+  logo: `${siteConfig.url}/logo.png`,
+  description: siteConfig.description,
+  email: siteConfig.email,
+  telephone: siteConfig.phone,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Level 4, Pinnacle Tech Park, HSR Layout",
+    addressLocality: "Bengaluru",
+    addressRegion: "Karnataka",
+    postalCode: "560102",
+    addressCountry: "IN",
+  },
+  sameAs: [
+    siteConfig.social.facebook,
+    siteConfig.social.instagram,
+    siteConfig.social.linkedin,
+    siteConfig.social.twitter,
+    siteConfig.social.youtube,
+  ],
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Pikzelkraft",
+  url: siteConfig.url,
+  potentialAction: {
+    "@type": "SearchAction",
+    target: `${siteConfig.url}/search?q={search_term_string}`,
+    "query-input": "required name=search_term_string",
+  },
 };
 
 export default function RootLayout({
@@ -33,7 +89,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased`}>
-        {children}
+        <JsonLd data={organizationJsonLd} />
+        <JsonLd data={websiteJsonLd} />
+        <MotionProvider>{children}</MotionProvider>
       </body>
     </html>
   );
