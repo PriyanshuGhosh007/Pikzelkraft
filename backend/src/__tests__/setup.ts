@@ -1,0 +1,10 @@
+process.env.NODE_ENV = "test";
+process.env.JWT_SECRET = "test-access-secret";
+process.env.JWT_REFRESH_SECRET = "test-refresh-secret";
+process.env.JWT_ACCESS_EXPIRES_IN = "15m";
+process.env.JWT_REFRESH_EXPIRES_IN = "7d";
+process.env.GOOGLE_CLIENT_ID = "test-client-id.apps.googleusercontent.com";
+process.env.SMTP_HOST = "";
+process.env.ADMIN_EMAIL = "admin@pikzelkraft.com";
+process.env.ADMIN_PASSWORD = "adminpassword123";
+process.env.ADMIN_NAME = "Test Admin";

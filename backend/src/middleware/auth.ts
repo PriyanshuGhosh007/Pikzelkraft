@@ -2,19 +2,21 @@ import type { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
 import { env } from "../config/env";
 import { AppError } from "./errorHandler";
+import type { Role } from "./roleGuard";
 
 export interface AuthPayload {
   sub: string;
   email?: string;
-  role: "user" | "admin";
+  role: Role;
 }
 
 declare global {
   namespace Express {
     interface Request {
       userId?: string;
-      userRole?: "user" | "admin";
+      userRole?: Role;
       userEmail?: string;
+      user?: { id: string; email?: string; role: Role };
     }
   }
 }
@@ -31,7 +33,7 @@ export function signRefreshToken(payload: AuthPayload): string {
   });
 }
 
-export function authenticate(req: Request, _res: Response, next: NextFunction): void {
+export function authenticateJWT(req: Request, _res: Response, next: NextFunction): void {
   const header = req.headers.authorization;
 
   if (!header?.startsWith("Bearer ")) {
@@ -49,9 +51,11 @@ export function authenticate(req: Request, _res: Response, next: NextFunction): 
       return;
     }
 
+    const role: Role = payload.role ?? "user";
     req.userId = payload.sub;
-    req.userRole = payload.role ?? "user";
+    req.userRole = role;
     req.userEmail = payload.email;
+    req.user = { id: payload.sub, email: payload.email, role };
     next();
   } catch {
     next(new AppError(401, "Invalid or expired token", "INVALID_TOKEN"));

@@ -47,6 +47,19 @@ export function verificationEmail(name: string, link: string): { subject: string
   };
 }
 
+export function registrationSuccessEmail(name: string): { subject: string; html: string } {
+  return {
+    subject: "Welcome to Pikzelkraft",
+    html: renderLayout(
+      "Welcome to Pikzelkraft",
+      `<p>Hi ${name},</p>
+       <p>Congratulations! Your Pikzelkraft account has been created successfully.</p>
+       <p>You can now sign in to your dashboard and start exploring our digital marketing and IT solutions.</p>
+       <p>If you did not create this account, please contact our support team immediately.</p>`
+    ),
+  };
+}
+
 export function otpEmail(name: string, otp: string, expiresInMinutes = 10): { subject: string; html: string } {
   return {
     subject: "Your Pikzelkraft verification code",

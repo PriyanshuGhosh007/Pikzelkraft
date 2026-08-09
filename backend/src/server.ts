@@ -3,10 +3,12 @@ import { app } from "./app";
 import { connectDB, disconnectDB } from "./config/db";
 import { env } from "./config/env";
 import { logger } from "./utils/logger";
+import { seedAdmin } from "./services/auth.service";
 
 async function main(): Promise<void> {
   try {
     await connectDB();
+    await seedAdmin();
 
     const server = app.listen(env.PORT, () => {
       logger.info(`Pikzelkraft API listening on http://localhost:${env.PORT} (${env.NODE_ENV})`);

@@ -2,9 +2,10 @@ import express from "express";
 import helmet from "helmet";
 import cors from "cors";
 import { env } from "./config/env";
-import { globalLimiter } from "./middleware/rateLimiter";
+import { globalLimiter, authLimiter } from "./middleware/rateLimiter";
 import { errorHandler, notFoundHandler } from "./middleware/errorHandler";
 import routes from "./routes";
+import authRoutes from "./routes/auth.routes";
 
 export const app = express();
 
@@ -30,6 +31,7 @@ app.get("/", (_req, res) => {
   res.json({ success: true, data: { service: "pikzelkraft-api", version: "1.0.0" } });
 });
 
+app.use("/api/auth", authLimiter, authRoutes);
 app.use("/api/v1", globalLimiter);
 app.use("/api/v1", routes);
 

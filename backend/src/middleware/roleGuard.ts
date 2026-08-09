@@ -3,15 +3,19 @@ import { AppError } from "./errorHandler";
 
 export type Role = "user" | "admin";
 
-export function roleGuard(...roles: Role[]) {
+export function requireRole(roles: Role | Role[]) {
+  const allowed = Array.isArray(roles) ? roles : [roles];
+
   return (req: Request, _res: Response, next: NextFunction): void => {
     if (!req.userRole) {
       next(new AppError(401, "Authentication required", "AUTH_REQUIRED"));
       return;
     }
 
-    if (!roles.includes(req.userRole)) {
-      next(new AppError(403, "You do not have permission to access this resource", "FORBIDDEN"));
+    if (!allowed.includes(req.userRole)) {
+      next(
+        new AppError(403, "You do not have permission to access this resource", "FORBIDDEN")
+      );
       return;
     }
 
@@ -19,5 +23,5 @@ export function roleGuard(...roles: Role[]) {
   };
 }
 
-export const requireAdmin = roleGuard("admin");
-export const requireUser = roleGuard("user", "admin");
+export const requireAdmin = requireRole("admin");
+export const requireUser = requireRole(["user", "admin"]);
