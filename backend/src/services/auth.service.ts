@@ -9,7 +9,7 @@ import {
   type AuthPayload,
 } from "../middleware/auth";
 import { UserModel, type UserDocument } from "../models/User";
-import { registrationSuccessEmail, otpEmail } from "../utils/emailTemplates";
+import { otpEmail, registrationSuccess } from "../utils/emailTemplates";
 import { sendMail } from "./mailer";
 import { verifyGoogleIdToken } from "./googleAuth";
 
@@ -100,7 +100,7 @@ export async function registerUser(input: RegisterInput): Promise<{
 
   await sendMail({
     to: user.email,
-    ...registrationSuccessEmail(user.fullName),
+    ...registrationSuccess(user),
   });
 
   return { user: sanitizeUser(user), ...buildTokens(user) };
