@@ -3,7 +3,6 @@ import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { PageHeader } from "@/components/marketing/page-header";
 import { Section, SectionAlt, Reveal } from "@/components/marketing/reveal";
 import { ContactForm } from "@/components/marketing/contact-form";
-import { WhatsAppButton } from "@/components/marketing/whatsapp-button";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -109,8 +108,6 @@ export default function ContactPage() {
           </Reveal>
         </div>
       </SectionAlt>
-
-      <WhatsAppButton />
     </>
   );
 }

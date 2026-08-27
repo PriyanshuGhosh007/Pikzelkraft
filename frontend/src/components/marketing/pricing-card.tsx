@@ -1,8 +1,11 @@
-import { Check } from "lucide-react";
+import { ArrowRight, Check, Clock } from "lucide-react";
 import { formatINR, type PricingPackage } from "@/data/pricing";
 import { cn } from "@/lib/utils";
 
 export function PricingCard({ pkg }: { pkg: PricingPackage }) {
+  const getStartedHref = pkg.paymentLink ?? `/contact?plan=${pkg.id}`;
+  const getStartedExternal = Boolean(pkg.paymentLink);
+
   return (
     <div
       className={cn(
@@ -23,8 +26,15 @@ export function PricingCard({ pkg }: { pkg: PricingPackage }) {
           {pkg.period === "monthly" ? "/month" : pkg.period === "custom" ? "pricing" : "one-time"}
         </span>
       </p>
+      <p className="mt-2 flex items-center gap-1.5 text-body-sm font-medium text-primary-700">
+        <Clock size={14} aria-hidden />
+        {pkg.duration}
+      </p>
       <p className="mt-3 text-body-sm text-ink-muted">{pkg.description}</p>
-      <ul className="mt-6 flex flex-1 flex-col gap-2.5">
+      <p className="mt-6 text-label font-semibold uppercase tracking-[0.08em] text-ink">
+        Services included
+      </p>
+      <ul className="mt-3 flex flex-1 flex-col gap-2.5">
         {pkg.features.map((feature) => (
           <li key={feature} className="flex items-start gap-2.5 text-body-sm text-ink-muted">
             <Check size={15} className="mt-0.5 shrink-0 text-primary-600" aria-hidden />
@@ -32,17 +42,28 @@ export function PricingCard({ pkg }: { pkg: PricingPackage }) {
           </li>
         ))}
       </ul>
-      <a
-        href={`/contact?plan=${pkg.id}`}
-        className={cn(
-          "mt-7 inline-flex h-11 items-center justify-center rounded-md text-button font-medium transition-all duration-200 active:scale-[0.98]",
-          pkg.popular
-            ? "bg-gradient-primary text-white shadow-soft hover:brightness-110 hover:shadow-glow"
-            : "border border-border bg-surface text-ink hover:border-strong hover:bg-surface-muted"
-        )}
-      >
-        {pkg.cta}
-      </a>
+      <div className="mt-7 flex flex-col gap-2.5">
+        <a
+          href={getStartedHref}
+          target={getStartedExternal ? "_blank" : undefined}
+          rel={getStartedExternal ? "noreferrer" : undefined}
+          className={cn(
+            "inline-flex h-11 items-center justify-center gap-2 rounded-md text-button font-medium transition-all duration-200 active:scale-[0.98]",
+            pkg.popular
+              ? "bg-gradient-primary text-white shadow-soft hover:brightness-110 hover:shadow-glow"
+              : "border border-border bg-surface text-ink hover:border-strong hover:bg-surface-muted"
+          )}
+        >
+          {pkg.cta}
+          <ArrowRight size={15} aria-hidden />
+        </a>
+        <a
+          href={`/contact?plan=${pkg.id}`}
+          className="inline-flex h-11 items-center justify-center rounded-md text-button font-medium text-primary-700 underline-offset-4 transition-colors hover:underline"
+        >
+          Enquire Now
+        </a>
+      </div>
     </div>
   );
 }

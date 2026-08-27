@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   description:
     "Pikzelkraft delivers pixel-perfect digital marketing and IT solutions for ambitious brands.",
   keywords: ["digital marketing", "IT solutions", "web development", "Pikzelkraft"],
-  metadataBase: new URL("https://pikzelkraft.com"),
+  metadataBase: new URL(siteConfig.url),
   openGraph: {
     type: "website",
     locale: "en_IN",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     title: "Pikzelkraft — Digital Marketing & IT Solutions",
     description:
       "Pikzelkraft delivers pixel-perfect digital marketing and IT solutions for ambitious brands.",
-    url: "https://pikzelkraft.com",
+    url: siteConfig.url,
   },
   twitter: {
     card: "summary_large_image",

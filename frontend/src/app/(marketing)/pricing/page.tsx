@@ -26,11 +26,12 @@ export default function PricingPage() {
         <div className="container-shell">
           <Reveal className="mx-auto mb-12 max-w-2xl text-center">
             <span className="text-label font-semibold uppercase tracking-[0.08em] text-primary-700">
-              Bundled packages
+              Top combined packages
             </span>
-            <h2 className="mt-3 text-h2 text-ink">Complete growth engines</h2>
+            <h2 className="mt-3 text-h2 text-ink">All-in-one growth packages</h2>
             <p className="mt-3 text-body-lg text-ink-muted">
-              Everything bundled and coordinated — ideal when you want one partner running the show.
+              Everything bundled and coordinated — one partner running the show, with services,
+              duration and transparent pricing included.
             </p>
           </Reveal>
           <StaggerGroup className="grid items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -47,11 +48,12 @@ export default function PricingPage() {
         <div className="container-shell">
           <Reveal className="mx-auto mb-12 max-w-2xl text-center">
             <span className="text-label font-semibold uppercase tracking-[0.08em] text-primary-700">
-              Individual services
+              Individual service packages
             </span>
             <h2 className="mt-3 text-h2 text-ink">Buy exactly what you need</h2>
             <p className="mt-3 text-body-lg text-ink-muted">
-              Already have the rest covered? Purchase a single service and plug it into your stack.
+              Already have the rest covered? Purchase a single service with a fixed duration and
+              plug it into your stack.
             </p>
           </Reveal>
           <StaggerGroup className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

@@ -4,11 +4,14 @@ export type PricingPackage = {
   tagline: string;
   price: number;
   period: "monthly" | "one-time" | "custom";
+  duration: string;
   description: string;
   features: string[];
   popular?: boolean;
   featured?: boolean;
   cta: string;
+  /** Optional external Razorpay Payment Link for instant checkout. */
+  paymentLink?: string;
 };
 
 export const pricingPackages: PricingPackage[] = [
@@ -18,6 +21,7 @@ export const pricingPackages: PricingPackage[] = [
     tagline: "For startups getting off the ground",
     price: 24999,
     period: "monthly",
+    duration: "Monthly retainer",
     description:
       "A focused starter kit to establish your digital presence and start generating leads.",
     features: [
@@ -27,7 +31,7 @@ export const pricingPackages: PricingPackage[] = [
       "Monthly performance report",
       "Email support",
     ],
-    cta: "Start with Launch Pad",
+    cta: "Get Started",
   },
   {
     id: "growth-sprint",
@@ -35,6 +39,7 @@ export const pricingPackages: PricingPackage[] = [
     tagline: "For businesses ready to scale",
     price: 49999,
     period: "monthly",
+    duration: "Monthly retainer",
     popular: true,
     featured: true,
     description:
@@ -47,7 +52,7 @@ export const pricingPackages: PricingPackage[] = [
       "Monthly strategy call",
       "Priority support",
     ],
-    cta: "Grow with Pikzelkraft",
+    cta: "Get Started",
   },
   {
     id: "scale-master",
@@ -55,6 +60,7 @@ export const pricingPackages: PricingPackage[] = [
     tagline: "For aggressive growth targets",
     price: 99999,
     period: "monthly",
+    duration: "Monthly retainer",
     featured: true,
     description:
       "An aggressive, full-funnel engine for companies chasing serious market share.",
@@ -66,7 +72,7 @@ export const pricingPackages: PricingPackage[] = [
       "Conversion rate optimization",
       "Dedicated account manager",
     ],
-    cta: "Scale faster",
+    cta: "Get Started",
   },
   {
     id: "corporate-pro",
@@ -74,6 +80,7 @@ export const pricingPackages: PricingPackage[] = [
     tagline: "For enterprises & multi-brand teams",
     price: 199999,
     period: "monthly",
+    duration: "Monthly retainer",
     description:
       "Enterprise-grade delivery with multi-channel orchestration and executive reporting.",
     features: [
@@ -84,7 +91,7 @@ export const pricingPackages: PricingPackage[] = [
       "24/7 priority support",
       "Dedicated team of specialists",
     ],
-    cta: "Talk to sales",
+    cta: "Get Started",
   },
   {
     id: "brand-builder",
@@ -92,6 +99,7 @@ export const pricingPackages: PricingPackage[] = [
     tagline: "One-time brand identity system",
     price: 89999,
     period: "one-time",
+    duration: "3–5 weeks",
     description:
       "A complete identity — logo, guidelines and collateral — to position you as a leader.",
     features: [
@@ -101,7 +109,7 @@ export const pricingPackages: PricingPackage[] = [
       "Business card & letterhead design",
       "Social media brand kit",
     ],
-    cta: "Build my brand",
+    cta: "Get Started",
   },
   {
     id: "website-pro",
@@ -109,6 +117,7 @@ export const pricingPackages: PricingPackage[] = [
     tagline: "One-time conversion-ready website",
     price: 69999,
     period: "one-time",
+    duration: "4–8 weeks",
     featured: true,
     description:
       "A pixel-perfect, SEO-ready website designed to turn visitors into customers.",
@@ -119,7 +128,7 @@ export const pricingPackages: PricingPackage[] = [
       "Analytics & conversion tracking",
       "30-day post-launch support",
     ],
-    cta: "Build my website",
+    cta: "Get Started",
   },
   {
     id: "seo-authority",
@@ -127,6 +136,7 @@ export const pricingPackages: PricingPackage[] = [
     tagline: "Dedicated organic growth engine",
     price: 34999,
     period: "monthly",
+    duration: "3–6 months",
     description:
       "A stand-alone SEO program for teams that want organic growth without the full bundle.",
     features: [
@@ -136,7 +146,7 @@ export const pricingPackages: PricingPackage[] = [
       "Authority building",
       "Monthly ranking reports",
     ],
-    cta: "Rank higher",
+    cta: "Get Started",
   },
   {
     id: "enterprise-cloud",
@@ -144,6 +154,7 @@ export const pricingPackages: PricingPackage[] = [
     tagline: "Custom IT & infrastructure solutions",
     price: 0,
     period: "custom",
+    duration: "Scoped per project",
     description:
       "Tailored engineering — cloud, DevOps, security and AI — scoped to your architecture.",
     features: [
@@ -153,7 +164,7 @@ export const pricingPackages: PricingPackage[] = [
       "AI & workflow automation",
       "Dedicated engineering pod",
     ],
-    cta: "Request a proposal",
+    cta: "Enquire Now",
   },
 ];
 
@@ -163,22 +174,25 @@ export type IndividualPricing = {
   icon: string;
   priceStarting: number;
   unit: string;
+  duration: string;
   description: string;
+  /** Optional external Razorpay Payment Link for instant checkout. */
+  paymentLink?: string;
 };
 
 export const individualPricing: IndividualPricing[] = [
-  { slug: "web-development", name: "Web Development", icon: "web-development", priceStarting: 49999, unit: "per project", description: "Custom, conversion-focused websites and web apps." },
-  { slug: "seo", name: "Search Engine Optimization", icon: "seo", priceStarting: 19999, unit: "per month", description: "Technical, on-page and content SEO that compounds." },
-  { slug: "social-media-marketing", name: "Social Media Marketing", icon: "social-media-marketing", priceStarting: 14999, unit: "per month", description: "Content, community and paid social management." },
-  { slug: "content-marketing", name: "Content Marketing", icon: "content-marketing", priceStarting: 12999, unit: "per month", description: "Blogs, ebooks and thought leadership that convert." },
-  { slug: "email-marketing", name: "Email Marketing", icon: "email-marketing", priceStarting: 9999, unit: "per month", description: "Lifecycle automations and campaigns with high deliverability." },
-  { slug: "ppc-advertising", name: "PPC Advertising", icon: "ppc-advertising", priceStarting: 19999, unit: "per month", description: "Google, Meta and LinkedIn ads engineered for ROI." },
-  { slug: "branding-design", name: "Branding & Design", icon: "branding-design", priceStarting: 39999, unit: "per project", description: "Identity systems, logos and brand guidelines." },
-  { slug: "ui-ux-design", name: "UI/UX Design", icon: "ui-ux-design", priceStarting: 49999, unit: "per project", description: "Research-driven product design that converts." },
-  { slug: "video-production", name: "Video Production", icon: "video-production", priceStarting: 29999, unit: "per project", description: "Promos, demos and motion graphics that stop the scroll." },
-  { slug: "ecommerce-development", name: "E-commerce Development", icon: "ecommerce-development", priceStarting: 59999, unit: "per project", description: "Online stores built for conversion with payments wired up." },
-  { slug: "digital-strategy", name: "Digital Strategy", icon: "digital-strategy", priceStarting: 24999, unit: "per engagement", description: "Data-driven roadmaps aligned to business goals." },
-  { slug: "ai-automation", name: "AI & Automation", icon: "ai-automation", priceStarting: 99999, unit: "per project", description: "Custom AI assistants and workflow automation." },
+  { slug: "web-development", name: "Web Development", icon: "web-development", priceStarting: 49999, unit: "per project", duration: "4–8 weeks", description: "Custom, conversion-focused websites and web apps." },
+  { slug: "seo", name: "Search Engine Optimization", icon: "seo", priceStarting: 19999, unit: "per month", duration: "3–6 months", description: "Technical, on-page and content SEO that compounds." },
+  { slug: "social-media-marketing", name: "Social Media Marketing", icon: "social-media-marketing", priceStarting: 14999, unit: "per month", duration: "Monthly", description: "Content, community and paid social management." },
+  { slug: "content-marketing", name: "Content Marketing", icon: "content-marketing", priceStarting: 12999, unit: "per month", duration: "Monthly", description: "Blogs, ebooks and thought leadership that convert." },
+  { slug: "email-marketing", name: "Email Marketing", icon: "email-marketing", priceStarting: 9999, unit: "per month", duration: "Monthly", description: "Lifecycle automations and campaigns with high deliverability." },
+  { slug: "ppc-advertising", name: "PPC Advertising", icon: "ppc-advertising", priceStarting: 19999, unit: "per month", duration: "Monthly", description: "Google, Meta and LinkedIn ads engineered for ROI." },
+  { slug: "branding-design", name: "Branding & Design", icon: "branding-design", priceStarting: 39999, unit: "per project", duration: "3–5 weeks", description: "Identity systems, logos and brand guidelines." },
+  { slug: "ui-ux-design", name: "UI/UX Design", icon: "ui-ux-design", priceStarting: 49999, unit: "per project", duration: "4–6 weeks", description: "Research-driven product design that converts." },
+  { slug: "video-production", name: "Video Production", icon: "video-production", priceStarting: 29999, unit: "per project", duration: "2–4 weeks", description: "Promos, demos and motion graphics that stop the scroll." },
+  { slug: "ecommerce-development", name: "E-commerce Development", icon: "ecommerce-development", priceStarting: 59999, unit: "per project", duration: "5–8 weeks", description: "Online stores built for conversion with payments wired up." },
+  { slug: "digital-strategy", name: "Digital Strategy", icon: "digital-strategy", priceStarting: 24999, unit: "per engagement", duration: "One-time + reviews", description: "Data-driven roadmaps aligned to business goals." },
+  { slug: "ai-automation", name: "AI & Automation", icon: "ai-automation", priceStarting: 99999, unit: "per project", duration: "4–8 weeks", description: "Custom AI assistants and workflow automation." },
 ];
 
 export function formatINR(amount: number): string {

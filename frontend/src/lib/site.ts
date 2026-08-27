@@ -3,7 +3,7 @@ export const siteConfig = {
   tagline: "Digital Excellence, Crafted.",
   description:
     "Pikzelkraft delivers pixel-perfect digital marketing and IT solutions for ambitious brands.",
-  url: "https://pikzelkraft.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://pikzelkraft.com",
   email: "hello@pikzelkraft.com",
   phone: "+91 98765 43210",
   whatsapp: "919876543210",

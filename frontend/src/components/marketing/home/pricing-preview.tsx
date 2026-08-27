@@ -11,8 +11,8 @@ export function PricingPreview() {
       <div className="container-shell">
         <SectionHeader
           eyebrow="Pricing"
-          title="Simple packages, serious results"
-          lede="Transparent pricing with no hidden fees. Pick a plan, or mix individual services to fit your exact needs."
+          title="Top packages, serious results"
+          lede="Transparent pricing on combined packages and individual services. Pick a plan, or mix services to fit your exact needs."
         />
         <div className="grid items-start gap-6 lg:grid-cols-3">
           {featured.map((pkg, i) => (
