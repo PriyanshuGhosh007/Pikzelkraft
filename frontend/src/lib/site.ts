@@ -5,9 +5,9 @@ export const siteConfig = {
     "Pikzelkraft delivers pixel-perfect digital marketing and IT solutions for ambitious brands.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://pikzelkraft.com",
   email: "hello@pikzelkraft.com",
-  phone: "+91 98765 43210",
-  whatsapp: "919876543210",
-  address: "Level 4, Pinnacle Tech Park, HSR Layout, Bengaluru, Karnataka 560102",
+  phone: "+91 85858 32972",
+  whatsapp: "918585832972",
+  address: "Flat no 1, Baikuntha Ganguly Rd, Amarabati, Sodepur, Kolkata, Khardaha, West Bengal 700110",
   hours: "Mon–Sat, 9:30 AM – 7:00 PM IST",
   social: {
     facebook: "https://facebook.com/pikzelkraft",
@@ -17,7 +17,9 @@ export const siteConfig = {
     youtube: "https://youtube.com/@pikzelkraft",
   },
   mapEmbed:
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3890.4!2d77.641!3d12.912!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU0JzQzLjIiTiA3N8KwMzgnMjcuNiJF!5e0!3m2!1sen!2sin!4v1700000000000",
+    "https://www.google.com/maps?q=22.7030349,88.3871946&z=17&hl=en&output=embed",
+  mapLink: "https://maps.app.goo.gl/e4W8EDrCUf242t3Y6",
+  mapCoordinates: { lat: 22.7030349, lng: 88.3871946 },
 };
 
 export const navLinks = [

@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { PageHeader } from "@/components/marketing/page-header";
-import { Section, SectionAlt, Reveal } from "@/components/marketing/reveal";
+import { Section, Reveal } from "@/components/marketing/reveal";
 import { ContactForm } from "@/components/marketing/contact-form";
+import { MapSection } from "@/components/marketing/map-section";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -84,30 +85,7 @@ export default function ContactPage() {
         </div>
       </Section>
 
-      <SectionAlt className="section-sm">
-        <div className="container-shell">
-          <Reveal className="mx-auto mb-10 max-w-2xl text-center">
-            <span className="text-label font-semibold uppercase tracking-[0.08em] text-primary-700">
-              Visit us
-            </span>
-            <h2 className="mt-3 text-h2 text-ink">Find us in Bengaluru</h2>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <div className="overflow-hidden rounded-xl border border-border shadow-soft">
-              <iframe
-                title="Pikzelkraft office location"
-                src={siteConfig.mapEmbed}
-                width="100%"
-                height="420"
-                style={{ border: 0 }}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                allowFullScreen
-              />
-            </div>
-          </Reveal>
-        </div>
-      </SectionAlt>
+      <MapSection />
     </>
   );
 }

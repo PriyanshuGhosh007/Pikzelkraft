@@ -6,7 +6,7 @@ export function ContactCta() {
   return (
     <section className="container-shell section-md">
       <Reveal>
-        <div className="relative overflow-hidden rounded-2xl bg-gradient-violet px-6 py-14 text-center shadow-floating sm:px-12 lg:py-20">
+        <div className="relative overflow-hidden rounded-2xl bg-gradient-brand px-6 py-14 text-center shadow-floating sm:px-12 lg:py-20">
           <div
             aria-hidden
             className="absolute inset-0 bg-grid-pattern opacity-[0.12] [mask-image:radial-gradient(60%_60%_at_50%_50%,black,transparent)]"

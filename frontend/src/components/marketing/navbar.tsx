@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, Menu, X } from "lucide-react";
 import { Logo } from "./logo";
+import { ThemeToggle } from "./theme-toggle";
 import { navLinks } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -94,6 +95,7 @@ export function Navbar() {
             Get Started
             <ArrowRight size={16} aria-hidden />
           </a>
+          <ThemeToggle className="hidden lg:flex" />
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
@@ -142,10 +144,11 @@ export function Navbar() {
                 );
               })}
             </ul>
-            <div className="container-shell pb-6">
+            <div className="container-shell flex items-center gap-3 pb-6">
+              <ThemeToggle className="lg:hidden" />
               <a
                 href="/pricing"
-                className="flex items-center justify-center gap-2 rounded-md bg-gradient-primary px-5 py-3 text-button font-medium text-white shadow-soft"
+                className="flex flex-1 items-center justify-center gap-2 rounded-md bg-gradient-primary px-5 py-3 text-button font-medium text-white shadow-soft"
               >
                 Get Started
                 <ArrowRight size={16} aria-hidden />

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import { MotionProvider } from "@/components/providers/motion-provider";
+import { ThemeProvider } from "@/components/providers/theme-provider";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
@@ -48,16 +49,16 @@ const organizationJsonLd = {
   "@type": "Organization",
   name: "Pikzelkraft",
   url: siteConfig.url,
-  logo: `${siteConfig.url}/logo.png`,
+  logo: `${siteConfig.url}/logo.webp`,
   description: siteConfig.description,
   email: siteConfig.email,
   telephone: siteConfig.phone,
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Level 4, Pinnacle Tech Park, HSR Layout",
-    addressLocality: "Bengaluru",
-    addressRegion: "Karnataka",
-    postalCode: "560102",
+    streetAddress: "Flat no 1, Baikuntha Ganguly Rd, Amarabati, Sodepur",
+    addressLocality: "Kolkata",
+    addressRegion: "West Bengal",
+    postalCode: "700110",
     addressCountry: "IN",
   },
   sameAs: [
@@ -88,10 +89,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem("pikzelkraft-theme");if(t!=="light"&&t!=="dark"){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.setAttribute("data-theme",t)}catch(e){}})();`,
+          }}
+        />
+      </head>
       <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased`}>
         <JsonLd data={organizationJsonLd} />
         <JsonLd data={websiteJsonLd} />
-        <MotionProvider>{children}</MotionProvider>
+        <ThemeProvider>
+          <MotionProvider>{children}</MotionProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

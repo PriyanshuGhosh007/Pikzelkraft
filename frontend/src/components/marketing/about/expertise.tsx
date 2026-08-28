@@ -59,7 +59,7 @@ export function Expertise() {
           </div>
         </Reveal>
         <Reveal delay={0.15}>
-          <div className="rounded-2xl bg-gradient-violet p-8 text-white shadow-floating sm:p-10">
+          <div className="rounded-2xl bg-gradient-brand p-8 text-white shadow-floating sm:p-10">
             <p className="text-label font-semibold uppercase tracking-[0.08em] text-white/80">
               The Pikzelkraft difference
             </p>

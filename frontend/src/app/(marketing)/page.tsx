@@ -9,6 +9,7 @@ import { PricingPreview } from "@/components/marketing/home/pricing-preview";
 import { Testimonials } from "@/components/marketing/home/testimonials";
 import { FaqPreview } from "@/components/marketing/home/faq-preview";
 import { ContactCta } from "@/components/marketing/home/cta-banner";
+import { MapSection } from "@/components/marketing/map-section";
 
 export const metadata: Metadata = {
   title: "Digital Marketing & IT Solutions",
@@ -29,6 +30,7 @@ export default function HomePage() {
       <PricingPreview />
       <Testimonials />
       <FaqPreview />
+      <MapSection />
       <ContactCta />
     </>
   );

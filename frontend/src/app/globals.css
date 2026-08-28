@@ -10,18 +10,18 @@
 :root {
   color-scheme: light;
 
-  /* Primary */
-  --primary-50: 240 246 255;
-  --primary-100: 223 235 255;
-  --primary-200: 190 215 255;
-  --primary-300: 146 188 255;
-  --primary-400: 95 156 255;
-  --primary-500: 46 127 255;
-  --primary-600: 0 102 255;
-  --primary-700: 0 82 209;
-  --primary-800: 0 67 168;
-  --primary-900: 6 55 127;
-  --primary-950: 4 35 79;
+  /* Primary — Pikzelkraft brand (logo navy → cyan) */
+  --primary-50: 229 247 248;
+  --primary-100: 204 238 240;
+  --primary-200: 165 224 229;
+  --primary-300: 108 201 210;
+  --primary-400: 62 183 195;
+  --primary-500: 43 216 211;
+  --primary-600: 14 58 123;
+  --primary-700: 10 44 96;
+  --primary-800: 8 33 72;
+  --primary-900: 6 24 53;
+  --primary-950: 4 15 33;
 
   /* Neutral */
   --neutral-50: 248 249 251;
@@ -51,8 +51,8 @@
   --border: 226 231 239;
   --border-strong: 203 211 224;
   --border-subtle: 238 241 246;
-  --border-primary: 190 215 255;
-  --border-focus: 0 102 255 0.5;
+  --border-primary: 165 224 229;
+  --border-focus: 14 58 123 0.5;
 
   /* Semantic */
   --success: 16 185 129;
@@ -78,7 +78,7 @@
   --glass-highlight: 255 255 255 0.8;
 
   /* Hover / disabled / overlay / focus */
-  --hover-primary: 0 82 209;
+  --hover-primary: 8 33 72;
   --hover-subtle: 238 241 246;
   --disabled-bg: 226 231 239;
   --disabled-text: 156 168 186;
@@ -86,13 +86,13 @@
   --overlay: 10 10 10 0.5;
   --overlay-light: 10 10 10 0.3;
   --overlay-heavy: 10 10 10 0.7;
-  --ring-focus: 0 102 255 0.25;
+  --ring-focus: 14 58 123 0.25;
 
-  /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #0066ff 0%, #00c2ff 100%);
-  --gradient-violet: linear-gradient(135deg, #0066ff 0%, #8b5cf6 100%);
+  /* Gradients — derived from the Pikzelkraft logo (cyan → navy) */
+  --gradient-primary: linear-gradient(135deg, #0e3a7b 0%, #0f5c8f 55%, #2bd8d3 130%);
+  --gradient-brand: linear-gradient(135deg, #071e63 0%, #0e3a7b 40%, #0f7e9f 80%, #2bd8d3 135%);
   --gradient-warm: linear-gradient(135deg, #f59e0b 0%, #ff6b6b 100%);
-  --gradient-text: linear-gradient(120deg, #0066ff, #00c2ff);
+  --gradient-text: linear-gradient(120deg, #0e3a7b 0%, #107a9f 50%, #2bd8d3 100%);
 }
 
 [data-theme="dark"] {
@@ -109,8 +109,8 @@
   --border: 42 47 58;
   --border-strong: 58 64 78;
   --border-subtle: 26 29 36;
-  --border-primary: 46 127 255;
-  --border-focus: 95 156 255 0.6;
+  --border-primary: 62 216 224;
+  --border-focus: 110 236 240 0.6;
   --success-text: 52 211 153;
   --success-soft: 6 33 26;
   --warning-text: 251 191 36;
@@ -122,12 +122,30 @@
   --glass-bg: 20 22 28 0.58;
   --glass-border: 255 255 255 0.1;
   --glass-highlight: 255 255 255 0.06;
-  --hover-primary: 46 127 255;
+  --hover-primary: 110 236 240;
   --hover-subtle: 39 46 57;
   --disabled-bg: 39 46 57;
   --disabled-text: 110 122 142;
-  --ring-focus: 95 156 255 0.3;
+  --ring-focus: 62 216 224 0.3;
   --overlay: 0 0 0 0.6;
+
+  /* Inverted primary scale — light cyan on dark surfaces */
+  --primary-50: 7 24 32;
+  --primary-100: 10 32 42;
+  --primary-200: 15 47 59;
+  --primary-300: 24 74 90;
+  --primary-400: 35 113 130;
+  --primary-500: 47 152 165;
+  --primary-600: 62 216 224;
+  --primary-700: 110 236 240;
+  --primary-800: 160 244 247;
+  --primary-900: 205 250 252;
+  --primary-950: 232 254 255;
+
+  /* Brighter brand gradients for dark surfaces */
+  --gradient-primary: linear-gradient(135deg, #0a2c60 0%, #10709c 50%, #3ed8e0 130%);
+  --gradient-brand: linear-gradient(135deg, #071e63 0%, #0e3a7b 35%, #0e7fa3 80%, #3ed8e0 140%);
+  --gradient-text: linear-gradient(120deg, #6eecf0 0%, #2bd8d3 60%, #3ed8e0 100%);
 }
 
 @layer base {
@@ -210,8 +228,8 @@
     background-image: var(--gradient-primary);
   }
 
-  .bg-gradient-violet {
-    background-image: var(--gradient-violet);
+  .bg-gradient-brand {
+    background-image: var(--gradient-brand);
   }
 
   .bg-gradient-warm {
